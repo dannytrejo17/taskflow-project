@@ -115,12 +115,35 @@ header nav li:hover {
   color: var(--accent);
 }
 
-
-main {      
+main {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--spacing);
   padding: var(--spacing);
-  background-color: var(--bg-main);
+  margin-top: calc(var(--header-height) - 40px); /* 10px más cerca del hero */
+}
+/* SIDEBAR */
+.sidebar {
+  background-color: #0f3d2e; /* verde oscuro */
+  color: var(--text-light);
+  padding: 8px var(--spacing);
+  border-radius: var(--radius);
 }
 
+.sidebar ul {
+  list-style: none;
+  margin-top: var(--spacing);
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sidebar li:hover {
+  color: var(--accent);
+}
 
 .products {
   display: grid;
@@ -174,21 +197,27 @@ main {
    RESPONSIVE MÓVIL
 ======================== */
 @media (max-width: 768px) {
-  main {
-    
-    margin-top: calc(var(--header-height) + var(--spacing));
-  }
-  .products {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* tarjetas más pequeñas en móvil */
+
+  /* HEADER LINKS */   
+  header nav li {
+    font-size: 0.7rem; /* más pequeño que en escritorio */
   }
 
+  /* MAIN */
+  main {
+    display: block; /* contenido vertical */
+    margin-top: calc(var(--header-height)+ 8px);
+    padding: var(--spacing);
+  }
+
+  /* HERO */
   .hero {
-    height: 250px; /* altura menor en móvil */
-    padding-left: 20px; /* menos espacio a la izquierda */
+    height: 250px;
+    padding-left: 20px;
   }
 
   .hero-content h2 {
-    font-size: 1.25rem; /* texto más pequeño en móvil */
+    font-size: 1.5rem;
   }
 
   .hero-content p {
@@ -196,15 +225,31 @@ main {
   }
 
   header h1 {
-    font-size: 1.2rem; /* título más pequeño en móvil */
+    font-size: 1.2rem;
   }
 
   .hero-btn {
-    padding: 10px 20px; /* botón más pequeño en móvil */
+    padding: 10px 20px;
   }
-  
+
+  /* PRODUCT CARDS */
+  .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--spacing);
+    justify-items: center; /* centra cada tarjeta */
+    padding: var(--spacing) 0;
+  }
+
   .product-card {
-    padding: 12px; /* menos espacio dentro de las tarjetas en móvil */
+    width: 100%;
+    max-width: 250px;
+    padding: 12px;
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    display: none; /* oculta sidebar en móvil */
   }
 
 }
